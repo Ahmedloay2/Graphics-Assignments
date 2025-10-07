@@ -113,78 +113,163 @@ void drawScene(void)
     // House base using GL_QUADS
     glColor3f(0.8f, 0.4f, 0.2f); // Brown
     glBegin(GL_QUADS);
-    glVertex3f(10.0, 40.0, 0.0);
-    glVertex3f(35.0, 40.0, 0.0);
-    glVertex3f(35.0, 15.0, 0.0);
-    glVertex3f(10.0, 15.0, 0.0);
+    glVertex3f(10.0, 40.0, 0.0);  // Top-left corner of house
+    glVertex3f(35.0, 40.0, 0.0);  // Top-right corner of house
+    glVertex3f(35.0, 15.0, 0.0);  // Bottom-right corner of house
+    glVertex3f(10.0, 15.0, 0.0);  // Bottom-left corner of house
     glEnd();
-    
+
     // Roof using GL_TRIANGLES
     glColor3f(0.6f, 0.2f, 0.1f); // Dark red-brown
     glBegin(GL_TRIANGLES);
-    glVertex3f(8.0, 40.0, 0.0);
-    glVertex3f(22.5, 52.0, 0.0);
-    glVertex3f(37.0, 40.0, 0.0);
+    glVertex3f(8.0, 40.0, 0.0);   // Bottom-left of roof (extends beyond house)
+    glVertex3f(22.5, 52.0, 0.0);  // Peak of roof
+    glVertex3f(37.0, 40.0, 0.0);  // Bottom-right of roof (extends beyond house)
     glEnd();
-    
+
     // Door using GL_QUADS
     glColor3f(0.4f, 0.2f, 0.1f); // Dark brown
     glBegin(GL_QUADS);
-    glVertex3f(18.0, 30.0, 0.0);
-    glVertex3f(24.0, 30.0, 0.0);
-    glVertex3f(24.0, 15.0, 0.0);
-    glVertex3f(18.0, 15.0, 0.0);
+    glVertex3f(18.0, 30.0, 0.0);  // Top-left of door
+    glVertex3f(24.0, 30.0, 0.0);  // Top-right of door
+    glVertex3f(24.0, 15.0, 0.0);  // Bottom-right of door
+    glVertex3f(18.0, 15.0, 0.0);  // Bottom-left of door
     glEnd();
-    
+
     // Windows using GL_QUADS
-    glColor3f(0.6f, 0.8f, 1.0f); // Light blue
+    glColor3f(0.6f, 0.8f, 1.0f); // Light blue window glass
     glBegin(GL_QUADS);
     // Left window
-    glVertex3f(13.0, 36.0, 0.0);
-    glVertex3f(17.0, 36.0, 0.0);
-    glVertex3f(17.0, 32.0, 0.0);
-    glVertex3f(13.0, 32.0, 0.0);
-    
+    glVertex3f(13.0, 36.0, 0.0);  // Top-left of left window
+    glVertex3f(17.0, 36.0, 0.0);  // Top-right of left window
+    glVertex3f(17.0, 32.0, 0.0);  // Bottom-right of left window
+    glVertex3f(13.0, 32.0, 0.0);  // Bottom-left of left window
+
     // Right window
-    glVertex3f(28.0, 36.0, 0.0);
-    glVertex3f(32.0, 36.0, 0.0);
-    glVertex3f(32.0, 32.0, 0.0);
-    glVertex3f(28.0, 32.0, 0.0);
+    glVertex3f(28.0, 36.0, 0.0);  // Top-left of right window
+    glVertex3f(32.0, 36.0, 0.0);  // Top-right of right window
+    glVertex3f(32.0, 32.0, 0.0);  // Bottom-right of right window
+    glVertex3f(28.0, 32.0, 0.0);  // Bottom-left of right window
     glEnd();
-    
+
     // Window frames using GL_LINE_LOOP
-    glColor3f(0.2f, 0.2f, 0.2f); // Dark gray
+    glColor3f(0.2f, 0.2f, 0.2f); // Dark gray for window frames
     glLineWidth(1.5);
     glBegin(GL_LINE_LOOP);
-    glVertex3f(13.0, 36.0, 0.0);
-    glVertex3f(17.0, 36.0, 0.0);
-    glVertex3f(17.0, 32.0, 0.0);
-    glVertex3f(13.0, 32.0, 0.0);
-    glEnd();
-    
-    glBegin(GL_LINE_LOOP);
-    glVertex3f(28.0, 36.0, 0.0);
-    glVertex3f(32.0, 36.0, 0.0);
-    glVertex3f(32.0, 32.0, 0.0);
-    glVertex3f(28.0, 32.0, 0.0);
+    glVertex3f(13.0, 36.0, 0.0);  // Frame top-left
+    glVertex3f(17.0, 36.0, 0.0);  // Frame top-right
+    glVertex3f(17.0, 32.0, 0.0);  // Frame bottom-right
+    glVertex3f(13.0, 32.0, 0.0);  // Frame bottom-left
     glEnd();
 
+    glBegin(GL_LINE_LOOP);
+    glVertex3f(28.0, 36.0, 0.0);  // Frame top-left
+    glVertex3f(32.0, 36.0, 0.0);  // Frame top-right
+    glVertex3f(32.0, 32.0, 0.0);  // Frame bottom-right
+    glVertex3f(28.0, 32.0, 0.0);  // Frame bottom-left
+    glEnd();
+
+    // Window cross frames (muntins) using GL_LINES
     glLineWidth(1.5);
     glBegin(GL_LINES);
-    glVertex3f(15.0, 32.0, 0.0);
-    glVertex3f(15.0, 36.0, 0.0);
-    glVertex3f(17.0, 34.0, 0.0);
-    glVertex3f(13.0, 34.0, 0.0);
+    // Left window cross
+    glVertex3f(15.0, 32.0, 0.0);  // Vertical line bottom
+    glVertex3f(15.0, 36.0, 0.0);  // Vertical line top
+    glVertex3f(17.0, 34.0, 0.0);  // Horizontal line right
+    glVertex3f(13.0, 34.0, 0.0);  // Horizontal line left
     glEnd();
 
     glBegin(GL_LINES);
-    glVertex3f(30.0, 32.0, 0.0);
-    glVertex3f(30.0, 36.0, 0.0);
-    glVertex3f(32.0, 34.0, 0.0);
-    glVertex3f(28.0, 34.0, 0.0);
+    // Right window cross
+    glVertex3f(30.0, 32.0, 0.0);  // Vertical line bottom
+    glVertex3f(30.0, 36.0, 0.0);  // Vertical line top
+    glVertex3f(32.0, 34.0, 0.0);  // Horizontal line right
+    glVertex3f(28.0, 34.0, 0.0);  // Horizontal line left
     glEnd();
 
-    // ========== OBJECT 4: TREE ==========
+    // ========== OBJECT 4: HUMAN ==========
+
+// ----- TORSO -----
+    glColor3f(0.3f, 0.5f, 0.9f); // Blue shirt
+    glBegin(GL_QUADS);
+    glVertex3f(26.0, 28.0, 0.0);
+    glVertex3f(29.0, 28.0, 0.0);
+    glVertex3f(29.0, 20.0, 0.0);
+    glVertex3f(26.0, 20.0, 0.0);
+    glEnd();
+
+    // ----- HEAD -----
+    glColor3f(1.0f, 0.8f, 0.6f); // Skin color
+    glBegin(GL_QUADS);
+    glVertex3f(26.5, 31.0, 0.0);
+    glVertex3f(28.5, 31.0, 0.0);
+    glVertex3f(28.5, 28.0, 0.0);
+    glVertex3f(26.5, 28.0, 0.0);
+    glEnd();
+
+    // ----- HAIR -----
+    glColor3f(0.4f, 0.25f, 0.1f); // Brown hair
+    glBegin(GL_QUADS);
+    glVertex3f(26.5, 31.0, 0.0);
+    glVertex3f(28.5, 31.0, 0.0);
+    glVertex3f(28.5, 30.0, 0.0);
+    glVertex3f(26.5, 30.0, 0.0);
+    glEnd();
+
+    // ----- LEFT ARM -----
+    glColor3f(1.0f, 0.8f, 0.6f); // Skin color
+    glBegin(GL_QUADS);
+    glVertex3f(25.0, 27.0, 0.0);
+    glVertex3f(26.0, 27.0, 0.0);
+    glVertex3f(26.0, 22.0, 0.0);
+    glVertex3f(25.0, 22.0, 0.0);
+    glEnd();
+
+    // ----- RIGHT ARM -----
+    glColor3f(1.0f, 0.8f, 0.6f); // Skin color
+    glBegin(GL_QUADS);
+    glVertex3f(29.0, 27.0, 0.0);
+    glVertex3f(30.0, 27.0, 0.0);
+    glVertex3f(30.0, 22.0, 0.0);
+    glVertex3f(29.0, 22.0, 0.0);
+    glEnd();
+
+    // ----- PANTS / LEGS -----
+    glColor3f(0.2f, 0.2f, 0.2f); // Dark gray pants
+    glBegin(GL_QUADS);
+    // Left leg
+    glVertex3f(26.0, 20.0, 0.0);
+    glVertex3f(27.0, 20.0, 0.0);
+    glVertex3f(27.0, 15.0, 0.0);
+    glVertex3f(26.0, 15.0, 0.0);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    // Right leg
+    glVertex3f(28.0, 20.0, 0.0);
+    glVertex3f(29.0, 20.0, 0.0);
+    glVertex3f(29.0, 15.0, 0.0);
+    glVertex3f(28.0, 15.0, 0.0);
+    glEnd();
+
+    // ----- SHOES -----
+    glColor3f(0.1f, 0.1f, 0.1f); // Black shoes
+    glBegin(GL_QUADS);
+    // Left shoe
+    glVertex3f(26.0, 15.0, 0.0);
+    glVertex3f(27.0, 15.0, 0.0);
+    glVertex3f(27.0, 14.5, 0.0);
+    glVertex3f(26.0, 14.5, 0.0);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    // Right shoe
+    glVertex3f(28.0, 15.0, 0.0);
+    glVertex3f(29.0, 15.0, 0.0);
+    glVertex3f(29.0, 14.5, 0.0);
+    glVertex3f(28.0, 14.5, 0.0);
+    glEnd();
+    // ========== OBJECT 5: TREE ==========
     // Tree trunk using GL_QUADS
     glColor3f(0.4f, 0.25f, 0.1f); // Brown
     glBegin(GL_QUADS);
@@ -220,7 +305,7 @@ void drawScene(void)
     glVertex3f(79.0, 43.0, 0.0);
     glEnd();
 
-    // ========== OBJECT 5: CAR ==========
+    // ========== OBJECT 6: CAR ==========
     // Car body using GL_QUADS
     glColor3f(0.8f, 0.0f, 0.0f); // Red
     glBegin(GL_QUADS);
@@ -253,20 +338,23 @@ void drawScene(void)
     glVertex3f(50.5, 24.5, 0.0);
     glEnd();
 
-    glColor3f(0.2f, 0.2f, 0.2f); // Dark gray
+    // Window cross frames for car windows
+    glColor3f(0.2f, 0.2f, 0.2f); // Dark gray for window frames
     glLineWidth(1.5);
     glBegin(GL_LINES);
-    glVertex3f(47.5, 24.5, 0.0);
-    glVertex3f(47.5, 28.5, 0.0);
-    glVertex3f(49.5, 26.5, 0.0);
-    glVertex3f(45.5, 26.5, 0.0);
+    // Front window cross
+    glVertex3f(47.5, 24.5, 0.0); // Vertical line top
+    glVertex3f(47.5, 28.5, 0.0); // Vertical line bottom
+    glVertex3f(49.5, 26.5, 0.0); // Horizontal line right
+    glVertex3f(45.5, 26.5, 0.0); // Horizontal line left
     glEnd();
 
     glBegin(GL_LINES);
-    glVertex3f(52.5, 28.5, 0.0);
-    glVertex3f(52.5, 24.5, 0.0);
-    glVertex3f(54.5, 26.5, 0.0);
-    glVertex3f(50.5, 26.5, 0.0);
+    // Back window cross
+    glVertex3f(52.5, 28.5, 0.0); // Vertical line top
+    glVertex3f(52.5, 24.5, 0.0); // Vertical line bottom
+    glVertex3f(54.5, 26.5, 0.0); // Horizontal line right
+    glVertex3f(50.5, 26.5, 0.0); // Horizontal line left
     glEnd();
     // Car wheels using GL_POLYGON (circles)
     glColor3f(0.1f, 0.1f, 0.1f); // Black
@@ -299,7 +387,7 @@ void drawScene(void)
     glVertex3f(54.0, 18.0, 0.0);
     glEnd();
 
-    // ========== OBJECT 6: FENCE ==========
+    // ========== OBJECT 7: FENCE ==========
     // Ground line first
     glColor3f(0.3f, 0.5f, 0.2f); // Dark green for grass line
     glLineWidth(2.0);

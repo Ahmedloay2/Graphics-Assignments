@@ -14,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,10 +33,6 @@
               "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Assignment1Scene.cpp",
@@ -44,7 +40,7 @@
               "RelativeDocumentMoniker": "Assignment1Scene.cpp",
               "ToolTip": "D:\\training\\OpenGL\\Assignment 1\\Assignment1Scene.cpp",
               "RelativeToolTip": "Assignment1Scene.cpp",
-              "ViewState": "AgIAALEAAAAAAAAAAAAAAEEBAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAO8AAAAAAAAAAADwv/wAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-06T16:35:16.347Z",
               "EditorCaption": ""
