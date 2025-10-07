@@ -1,0 +1,148 @@
+﻿///////////////////////////////////
+// square.cpp
+//
+// OpenGL program to draw a square.
+// 
+// Sumanta Guha.
+///////////////////////////////////
+
+#include <GL/glew.h>
+#include <GL/freeglut.h> 
+
+// Drawing routine.
+void drawScene(void)
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+
+    // Car Body (Optimized with better proportions)
+    glColor3f(0.2f, 0.2f, 0.8f); // Dark blue body
+    glBegin(GL_QUADS);
+    // Main body
+    glVertex3f(15.0, 50.0, 0.0);
+    glVertex3f(85.0, 50.0, 0.0);
+    glVertex3f(85.0, 20.0, 0.0);
+    glVertex3f(15.0, 20.0, 0.0);
+
+    // Top section (roof)
+    glVertex3f(25.0, 70.0, 0.0);
+    glVertex3f(75.0, 70.0, 0.0);
+    glVertex3f(75.0, 50.0, 0.0);
+    glVertex3f(25.0, 50.0, 0.0);
+    glEnd();
+
+    // Car Glass with Transparency Effect
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // Front windshield
+    glColor4f(0.7f, 0.9f, 1.0f, 0.6f); // Light blue with transparency
+    /*glBegin(GL_QUADS);
+    glVertex3f(30.0, 65.0, 0.0);
+    glVertex3f(70.0, 65.0, 0.0);
+    glVertex3f(70.0, 50.0, 0.0);
+    glVertex3f(30.0, 50.0, 0.0);
+    glEnd();*/
+
+    // Side windows with better proportions
+    glBegin(GL_QUADS);
+    // Left side window
+    glVertex3f(25.0, 65.0, 0.0);
+    glVertex3f(30.0, 65.0, 0.0);
+    glVertex3f(30.0, 50.0, 0.0);
+    glVertex3f(25.0, 50.0, 0.0);
+
+    // Right side window
+    glVertex3f(70.0, 65.0, 0.0);
+    glVertex3f(75.0, 65.0, 0.0);
+    glVertex3f(75.0, 50.0, 0.0);
+    glVertex3f(70.0, 50.0, 0.0);
+    glEnd();
+
+    glDisable(GL_BLEND);
+    /*
+    // Glass Frame/Division Lines (Optimized)
+    glColor3f(0.1f, 0.1f, 0.1f); // Dark gray for frame
+    glLineWidth(2.0); // Thicker lines for better visibility
+
+    glBegin(GL_LINES);
+    // Windshield frame
+    glVertex3f(25.0, 70.0, 0.0); glVertex3f(25.0, 50.0, 0.0); // Left pillar
+    glVertex3f(75.0, 70.0, 0.0); glVertex3f(75.0, 50.0, 0.0); // Right pillar
+    glVertex3f(25.0, 70.0, 0.0); glVertex3f(75.0, 70.0, 0.0); // Top frame
+
+    // Window divisions
+    glVertex3f(30.0, 65.0, 0.0); glVertex3f(30.0, 50.0, 0.0); // Left division
+    glVertex3f(70.0, 65.0, 0.0); glVertex3f(70.0, 50.0, 0.0); // Right division
+    glEnd();
+
+    // Enhanced Glass Cross Pattern (More realistic)
+    glColor3f(0.3f, 0.3f, 0.3f); // Medium gray for inner details
+    glLineWidth(1.0);
+
+    glBegin(GL_LINES);
+    // Front windshield cross pattern (simpler, more realistic)
+    glVertex3f(40.0, 65.0, 0.0); glVertex3f(40.0, 50.0, 0.0); // Vertical line
+    glVertex3f(50.0, 57.5, 0.0); glVertex3f(30.0, 57.5, 0.0); // Horizontal line
+    glVertex3f(60.0, 65.0, 0.0); glVertex3f(60.0, 50.0, 0.0); // Second vertical line
+    glEnd();
+    */
+	glFlush();
+}
+
+// Initialization routine.
+void setup(void)
+{
+	glClearColor(1.0, 1.0, 1.0, 0.0);
+}
+
+// OpenGL window reshape routine.
+void resize(int w, int h)
+{
+	glViewport(0, 0, w, h);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0.0, 100.0, 0.0, 100.0, -1.0, 1.0);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+}
+
+// Keyboard input processing routine.
+void keyInput(unsigned char key, int x, int y)
+{
+	switch (key)
+	{
+	case 27:
+		exit(0);
+		break;
+	default:
+		break;
+	}
+}
+
+// Main routine.
+int main(int argc, char** argv)
+{
+	glutInit(&argc, argv);
+
+	glutInitContextVersion(4, 3);
+	glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
+
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+
+	glutInitWindowSize(1000, 1000);
+	glutInitWindowPosition(100, 100);
+	
+	glutCreateWindow("square.cpp");
+	glutDisplayFunc(drawScene);
+	glutReshapeFunc(resize);
+	glutKeyboardFunc(keyInput);
+
+	glewExperimental = GL_TRUE;
+	glewInit();
+
+	setup();
+
+	glutMainLoop();
+}
