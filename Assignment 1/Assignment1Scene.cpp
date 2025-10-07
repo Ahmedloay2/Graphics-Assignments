@@ -1,12 +1,3 @@
-///////////////////////////////////
-// Assignment1_Scene.cpp
-//
-// OpenGL program to draw a 2D scene with 6 objects.
-// Objects: House, Car, Tree, Sun, Cloud, Fence
-// 
-// Team Members: 6
-///////////////////////////////////
-
 #include <GL/glew.h>
 #include <GL/freeglut.h> 
 #include <cmath>
@@ -256,18 +247,18 @@ void drawScene(void)
     glColor3f(0.1f, 0.1f, 0.1f); // Black shoes
     glBegin(GL_QUADS);
     // Left shoe
-    glVertex3f(26.0, 15.0, 0.0);
+    glVertex3f(26.0, 15.5, 0.0);
+    glVertex3f(27.0, 15.5, 0.0);
     glVertex3f(27.0, 15.0, 0.0);
-    glVertex3f(27.0, 14.5, 0.0);
-    glVertex3f(26.0, 14.5, 0.0);
+    glVertex3f(26.0, 15.0, 0.0);
     glEnd();
 
     glBegin(GL_QUADS);
     // Right shoe
-    glVertex3f(28.0, 15.0, 0.0);
+    glVertex3f(28.0, 15.5, 0.0);
+    glVertex3f(29.0, 15.5, 0.0);
     glVertex3f(29.0, 15.0, 0.0);
-    glVertex3f(29.0, 14.5, 0.0);
-    glVertex3f(28.0, 14.5, 0.0);
+    glVertex3f(28.0, 15.0, 0.0);
     glEnd();
     // ========== OBJECT 5: TREE ==========
     // Tree trunk using GL_QUADS
@@ -482,9 +473,8 @@ int main(int argc, char** argv)
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
 
 	glutInitWindowSize(1000, 1000);
-	glutInitWindowPosition(100, 100);
-	
-	glutCreateWindow("Assignment 1 - 2D Scene with 6 Objects");
+	glutInitWindowPosition(100, 100);	
+	glutCreateWindow("Assignment 1 - 2D Scene with 7 Objects");
 	glutDisplayFunc(drawScene);
 	glutReshapeFunc(resize);
 	glutKeyboardFunc(keyInput);

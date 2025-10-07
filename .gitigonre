@@ -1,0 +1,60 @@
+# ===== Visual Studio folders =====
+.vs/
+Debug/
+Release/
+x64/
+x86/
+[Aa][Rr][Mm]*/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+CopilotSnapshots/
+
+# ===== Compiled files =====
+*.exe
+*.dll
+*.lib
+*.pdb
+*.ilk
+*.obj
+*.idb
+
+# ===== Temporary / Build logs =====
+*.tlog
+*.log
+*.cache
+*.tmp
+*.user
+*.db
+*.recipe
+
+# ===== IDE & profiler data =====
+*.suo
+*.userosscache
+*.rsuser
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# ===== CMake / Make (if used) =====
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===== Keep these (do NOT ignore) =====
+!*.sln
+!*.vcxproj
+!*.vcxproj.filters
+!*.cpp
+!*.h
+!*.hpp
+!README.md
